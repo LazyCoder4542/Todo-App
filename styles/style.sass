@@ -1,0 +1,164 @@
+*, *::before, *::after
+    box-sizing: border-box
+    margin: 0
+    padding: 0
+:root
+    --clr-neutral1: hsl(0, 0%, 98%)
+    --clr-neutral2: hsl(236, 33%, 92%)
+    --clr-neutral3: hsl(233, 11%, 84%)
+    --clr-neutral4: hsl(236, 9%, 61%)
+    --clr-neutral5: hsl(235, 19%, 35%)
+    .light
+        display: block
+    .dark
+        display: none
+:root[data-theme="dark"]
+    --clr-neutral1: hsl(235, 21%, 11%)
+    --clr-neutral2: hsl(235, 24%, 19%)
+    --clr-neutral3: hsl(234, 39%, 85%)
+    --clr-neutral4: hsl(236, 33%, 92%)
+    --clr-neutral5: hsl(234, 11%, 52%)
+    --clr-neutral6: hsl(233, 14%, 35%)
+    --clr-neutral7: hsl(237, 14%, 26%)
+    .dark
+        display: block
+    .light
+        display: none
+    
+body
+    overflow-x: hidden
+    font-family: 'Josefin Sans', lexend, tahoma
+    min-height: 100vh
+    background: var(--clr-neutral2)
+input
+    outline: none
+    border: none
+    font-family: inherit
+    background-color: inherit
+    color: inherit
+    &::placeholder
+        color: inherit
+p
+    max-width: 100%
+    word-wrap: break-word
+    overflow-wrap: break-word
+    -ms-hyphens: auto
+    -moz-hyphens: auto
+    -webkit-hyphens: auto
+    hyphens: auto
+#bg-canva
+    position: absolute
+    top: 0
+    z-index: -1
+    .mobile
+        display: block
+    .desktop
+        display: none
+    div
+        img
+            width: 100%
+.container
+    width: 100%
+    max-width: 500px
+    position: relative
+    padding: 1.5rem
+    left: 50vw
+    transform: translateX(-50%)
+    #site-header
+        padding: 2rem 0
+        color: var(--clr-neutral1)
+        display: flex
+        justify-content: space-between
+    .wrapper
+        position: relative
+        width: 100%
+        display: grid
+        row-gap: 1em
+        color: var(--clr-neutral5)
+        .todo-add, .todo-list-section, .filter-tab
+            width: 100%
+            background-color: var(--clr-neutral1)
+            border-radius: 5px
+            display: flex
+            align-items: center
+        .todo-add, .todo-list-section #todo-list li, .todo-list-section .info, .filter-tab
+            padding: .75rem 1.25rem
+        .todo-add, .todo-list-section #todo-list li
+            display: flex
+            column-gap: .75rem
+            align-items: center
+            .check
+                flex-grow: 0
+                flex-shrink: 0
+                width: 20px
+                height: 20px
+                border-radius: 50%
+                border: 1px solid var(--clr-neutral3)
+                cursor: pointer
+            input
+                width: 100%
+                justify-self: stretch
+        .todo-add
+            width: 100%
+            color: var(--clr-neutral4)
+            .check.checked
+                    background-image: url("../images/icon-check.svg"), linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%))
+                    background-repeat: no-repeat
+                    background-position: center
+        .todo-list-section
+            flex-wrap: wrap
+            flex-direction: column
+            #todo-list
+                display: flex
+                flex-direction: column
+                flex-wrap: wrap
+                width: 100%
+                li
+                    p
+                        width: 100%
+                        text-overflow: ellipsis
+                        overflow: hidden
+                    .delete
+                        width: 15px
+                        height: 15px
+                        background-repeat: no-repeat
+                        background-position: center
+                        background-image: url("../images/icon-cross.svg")
+                        cursor: not-allowed
+                    &.checked
+                        order: -2 !important
+                        .check
+                            background-image: url("../images/icon-check.svg"), linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%))
+                            background-repeat: no-repeat
+                            background-position: center
+                        p
+                            text-decoration: line-through
+                            color: var(--clr-neutral3)
+                    &.hidden
+                        display: none
+            #empty
+                display: flex
+                flex-direction: column
+                height: 200px
+                width: 100%
+                place-items: center
+                place-content: center
+            .info
+                width: 100%
+                font-size: .75rem
+                display: flex
+                justify-content: space-between
+        .filter-tab
+            display: flex
+            justify-content: center
+            column-gap: .5rem
+            nav
+                cursor: pointer
+            nav.active
+                color: hsl(220, 98%, 61%)
+@media screen and ( min-width: 768px )
+    #bg-canva
+        .mobile
+            display: none
+        .desktop
+            display: block
